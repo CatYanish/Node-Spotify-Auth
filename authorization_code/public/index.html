@@ -28,6 +28,7 @@
         <div id="oauth">
         </div>
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+        <button class="btn btn-default" id="get-my-playlists">Get My Playlists</button>
       </div>
     </div>
 
@@ -133,6 +134,28 @@
                 refresh_token: refresh_token
               });
             });
+          }, false);
+
+
+          document.getElementById('get-my-playlists').addEventListener('click', function() {
+            $.ajax({
+                url: 'https://api.spotify.com/v1/me/playlists',
+                headers: {
+                  'Authorization': 'Bearer ' + access_token
+                },
+                success: function(response) {
+                  console.log(response);
+                  
+                  // userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+                }
+            })
+            // .done(function(data) {
+            //   access_token = data.access_token;
+            //   oauthPlaceholder.innerHTML = oauthTemplate({
+            //     access_token: access_token,
+            //     refresh_token: refresh_token
+            //   });
+            // });
           }, false);
         }
       })();
