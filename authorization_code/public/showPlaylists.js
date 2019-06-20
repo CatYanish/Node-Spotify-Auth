@@ -39,38 +39,24 @@ class ShowPlaylists extends React.Component {
         console.log(access_token);
 
 
-    // fetch("https://api.example.com/items", { headers: {
-    //         'Authorization': 'Bearer ' + access_token
-    //       }})
-    //
-    // // document.getElementById('get-my-playlists').addEventListener('click', function() {
-    // //   $.ajax({
-    // //       url: 'https://api.spotify.com/v1/me/playlists',
-    // //
-    // //       success: function(response) {
-    // //         console.log(response);
-    // //       }
-    // //   })
-    // // }, false);
-    //
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         items: result.items
-    //       });
-    //     },
-    //     // Note: it's important to handle errors here
-    //     // instead of a catch() block so that we don't swallow
-    //     // exceptions from actual bugs in components.
-    //     (error) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         error
-    //       });
-    //     }
-    //   )
+    fetch("https://api.spotify.com/v1/me/playlists", { headers: {
+            'Authorization': 'Bearer ' + access_token
+          }})
+          .then(res => res.json())
+          .then(
+            (response) => {
+              this.setState({
+                isLoaded: true,
+                items: response.items
+              });
+            },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+      )
   }
 
   render() {
