@@ -10,7 +10,7 @@ Once installed, clone the repository and install its dependencies running:
     $ npm install
 
 
-## Running the examples
+## Running the example
 
     $ npm start
 
